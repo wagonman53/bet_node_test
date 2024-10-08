@@ -107,14 +107,14 @@ if gto_size == "check":
 else:
     df_gto_filtered = df_gto_filtered[df_gto_filtered["Flop size 1"]!="check"]
 
-#SD係数の取得（サイズの絞り込み前に係数を取りたい）
-df_coef,dic_coef = graph_function.get_flop_sd_bias(df_gto_filtered,"OOP")
-
 #サイズの絞り込み
 if mda_size != "All Bets":
     df_mda_filtered = df_mda_filtered[df_mda_filtered["size_rank"]==mda_size]
 if gto_size != "All Bets":
     df_gto_filtered = df_gto_filtered[df_gto_filtered["Flop size 1"]==gto_size]
+
+#SD係数の取得
+df_coef,dic_coef = graph_function.get_flop_sd_bias(df_gto_filtered,"OOP")
 
 #バイアスあり役分布の表示
 st.subheader("アクション毎の役構成(SDバイアスあり)")
